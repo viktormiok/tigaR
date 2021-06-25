@@ -49,7 +49,7 @@ getDesign <- function(timefac,
             stop("Input (diffSpl) is of wrong class.")
           }
           # design of the experiment
-          dd <- data.frame(a = groupfac)
+          dd <- data.frame(a=groupfac)
           design <- as.matrix(sparse.model.matrix(~ -1 + a, dd))
           
           # define knots used for the p-spline at equal spaced
@@ -57,7 +57,7 @@ getDesign <- function(timefac,
           knots <- quantile(unique(timefac),
                             seq(0, 
                                 1,
-                                length = (numKnots+2))[-c(1, (numKnots+2))]
+                                length=(numKnots+2))[-c(1, (numKnots+2))]
           )
           # design matrix for random coefficients using a radial basis
           z_k <- (abs(outer(timefac, knots, "-")))^deg
@@ -75,8 +75,8 @@ getDesign <- function(timefac,
             }
             ZSpline <- as.matrix(bdiag(x))
           }
-          return(list(design = design,
-                      ZSpline = ZSpline
+          return(list(design=design,
+                      ZSpline=ZSpline
           )
           )
 }

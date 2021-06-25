@@ -5,12 +5,12 @@
 ###############################################################################
 
 tdge <- function(dat, 
-                 dat1 = NULL,
+                 dat1=NULL,
                  fitAlt,
                  fitNull,
                  design, 
                  ZSpline,
-                 multivar = FALSE){
+                 multivar=FALSE){
         # fitAlt: Fit object of the alternative hypothesis
         # fitNull: Fit object of the null hypothesis
         # dat: Gene expression data object
@@ -57,9 +57,9 @@ tdge <- function(dat,
             lam <- -2*log(sqrt((sum((obj$y - obj$fitA)^2)/
                                   sum((obj$y - obj$fit0)^2))^ncol(dat))
             ) 
-            df <- suppressWarnings(degFreedom(fit = fitAlt[[1]][[i]], 
-                                              design = design,
-                                              ZSpline = ZSpline
+            df <- suppressWarnings(degFreedom(fit=fitAlt[[1]][[i]], 
+                                              design=design,
+                                              ZSpline=ZSpline
             )) 
             pval <- 1- pchisq(lam, df)   
             ratio <- rbind(ratio, pval)       
@@ -67,8 +67,8 @@ tdge <- function(dat,
           }
         }
         cor_ratio <- p.adjust(ratio, 
-                              method = "fdr", 
-                              n = length(ratio)
+                              method="fdr", 
+                              n=length(ratio)
         )
         output <- data.frame(cbind(rownames(dat), logLik, ratio, cor_ratio))
         colnames(output) <- c("GeneName", "logLik", "pvalue", "padj")

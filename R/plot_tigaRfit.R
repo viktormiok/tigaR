@@ -8,10 +8,10 @@ plot_tigaRfit <- function(fit,
                           fit1, 
                           timefac,
                           groupfac,
-                          lattice = FALSE,
-                          cycle = FALSE,
-                          title = "title",
-                          multivar = FALSE){
+                          lattice=FALSE,
+                          cycle=FALSE,
+                          title="title",
+                          multivar=FALSE){
             # fit, fit1 : Object which contain fit, from FitIntAllShrink
             # Around0: Grafics will be ploted on the scale around 0
             # lattice: Make lattice plot
@@ -66,69 +66,69 @@ plot_tigaRfit <- function(fit,
                             groupfac
             )
             if(!cycle){  
-              par(mfrow = c(1, numgroup))
+              par(mfrow=c(1, numgroup))
               for(j in 1:numgroup){
                 datgraf <- subset(dataSet, 
                                   groupfac == j
                 )
                 plot(datgraf[,2],
                      datgraf[,1],
-                     main = paste("group",
+                     main=paste("group",
                                   j,
-                                  sep = " "), 
-                     type = "p", 
-                     ylim = c(min(dataSet[,1]), 
+                                  sep=" "), 
+                     type="p", 
+                     ylim=c(min(dataSet[,1]), 
                               max(dataSet[,1])),
-                     ylab = "Expression",
-                     xlab = "Time Points"
+                     ylab="Expression",
+                     xlab="Time Points"
                 )
                 
                 fitgraf <- subset(fitfin, 
                                   groupfac == j
                 )
                 lines(fitgraf[,1], 
-                      type = "l", 
-                      col = "red",
-                      lwd = 2
+                      type="l", 
+                      col="red",
+                      lwd=2
                 )
                 if(!is.null(fit1)) {
                   lines(fitgraf[,2],
-                        col = "blue",
-                        lty = "dashed"
+                        col="blue",
+                        lty="dashed"
                   )
                 }   
               }
             } else {
-              par(mfrow = c(1,1))
+              par(mfrow=c(1,1))
               fit_cyc <- data.frame(dataSet,
                                     fitfin
               )
               plot(fit_cyc$timefac, 
                    fit_cyc$data,
-                   xlab = "Time Points",
-                   ylab = "Expression",
-                   main = title
+                   xlab="Time Points",
+                   ylab="Expression",
+                   main=title
               )
               fit_cyc <- fit_cyc[fit_cyc$groupfac == 1,]
               lines(fit_cyc$timefac,
                     fit_cyc$fitval, 
-                    col = "red"
+                    col="red"
               )
               lines(fit_cyc$timefac,
                     fit_cyc$fitval1,
-                    col = "blue", 
-                    lty = "dashed"
+                    col="blue", 
+                    lty="dashed"
               )
             }
             if(lattice){     
               p <- data.frame(data, 
                               timefac, 
-                              paste("group", groupfac, sep = "_")
+                              paste("group", groupfac, sep="_")
               )
               colnames(p) <- c("Expression", "TimePoints", "CellLine")
               fram <- xyplot(Expression ~ TimePoints | CellLine,
-                             data = p,
-                             layout = c(numgroup, 1)
+                             data=p,
+                             layout=c(numgroup, 1)
               )                              
               print(fram)
               for(i in 1:numgroup){
@@ -137,12 +137,12 @@ plot_tigaRfit <- function(fit,
                 )
                 trellis.focus("panel", i, 1)
                 llines(fitgraf[,1],
-                       col = "red"
+                       col="red"
                 )
                 if(!is.null(fit1)){
                   llines(fitgraf[,2],
-                         col = "blue",
-                         lty = "dashed"
+                         col="blue",
+                         lty="dashed"
                   ) 
                 }     
               }

@@ -7,51 +7,51 @@
 
 tigaRshrinkSeq <- function(form,
                            dat, 
-                           dat1 = NULL,
+                           dat1=NULL,
                            timefac, 
                            groupfac,
                            ZSpline,
-                           fams = "zinb", 
-                           shrinkfixed = NULL, 
-                           shrinkaddfixed = NULL, 
-                           shrinkrandom = NULL,
-                           shrinkaddrandom = NULL, 
-                           shrinkdisp = TRUE, 
-                           shrinkp0 = FALSE,
-                           mixtdisp = FALSE, 
-                           mixtrand = FALSE, 
-                           excludefornull = NULL, 
-                           fixedmeanzero = FALSE,
-                           addfixedmeanzero = TRUE,
-                           curvedisp = FALSE, 
-                           maxiter = 15, 
-                           ntag = ifelse(is.null(excludefornull), 
+                           fams="zinb", 
+                           shrinkfixed=NULL, 
+                           shrinkaddfixed=NULL, 
+                           shrinkrandom=NULL,
+                           shrinkaddrandom=NULL, 
+                           shrinkdisp=TRUE, 
+                           shrinkp0=FALSE,
+                           mixtdisp=FALSE, 
+                           mixtrand=FALSE, 
+                           excludefornull=NULL, 
+                           fixedmeanzero=FALSE,
+                           addfixedmeanzero=TRUE,
+                           curvedisp=FALSE, 
+                           maxiter=15, 
+                           ntag=ifelse(is.null(excludefornull), 
                                          c(100, 200, 500, 1000), 
                                          c(1000)),
-                           ntagcurve = 5000, 
-                           fixed = c(0, 1/10),
-                           addfixed = c(0, 1/10),
-                           randomprec = c(1, 10^(-5)), 
-                           addrandomprec = c(1, 10^(-5)), 
-                           logdisp = c(0, 0.01),
-                           diracprob0 = ifelse((mixtrand | 
+                           ntagcurve=5000, 
+                           fixed=c(0, 1/10),
+                           addfixed=c(0, 1/10),
+                           randomprec=c(1, 10^(-5)), 
+                           addrandomprec=c(1, 10^(-5)), 
+                           logdisp=c(0, 0.01),
+                           diracprob0=ifelse((mixtrand | 
                                                 !is.null(excludefornull)),
                                                0.8, 
                                                0.2),
-                           logitp0 = c(0, 0.01), 
-                           fixedseed = TRUE,
-                           ndraw = 10000,
-                           safemode = TRUE, 
-                           tol = ifelse((mixtrand |
+                           logitp0=c(0, 0.01), 
+                           fixedseed=TRUE,
+                           ndraw=10000,
+                           safemode=TRUE, 
+                           tol=ifelse((mixtrand |
                                          !is.null(excludefornull)),
                                         0.005, 
                                         0.01), 
-                           tolrand = 0.02, 
-                           mliktol = 0.1,
-                           orthogonal = FALSE, 
-                           shrink = FALSE,
-                           multivar = FALSE,
-                           rho = 0, ...){
+                           tolrand=0.02, 
+                           mliktol=0.1,
+                           orthogonal=FALSE, 
+                           shrink=FALSE,
+                           multivar=FALSE,
+                           rho=0, ...){
               if (!is(form, "formula")) {
                 stop("Input (forms) is of wrong class.")
               }
@@ -224,16 +224,16 @@ tigaRshrinkSeq <- function(form,
               lngene <- length(ntag)
               pmlist <- list()
               pmlist <- c(pmlist, 
-                          list(mufixed = fixed[1], 
-                               precfixed = fixed[2])
+                          list(mufixed=fixed[1], 
+                               precfixed=fixed[2])
               )
               if (!is.null(shrinkaddfixed)) {
                 for (i in 1:els) {
                   addf <- as.numeric(addfixed[[i]])
-                  name <- c(paste("mu", shrinkaddfixed[i], sep = ""), 
-                            paste("prec", shrinkaddfixed[i], sep = ""))
-                  toadd <- list(muaddfixed = addf[1],
-                                precaddfixed = addf[2]
+                  name <- c(paste("mu", shrinkaddfixed[i], sep=""), 
+                            paste("prec", shrinkaddfixed[i], sep=""))
+                  toadd <- list(muaddfixed=addf[1],
+                                precaddfixed=addf[2]
                   )
                   names(toadd) <- name
                   pmlist <- c(pmlist, toadd)
@@ -241,21 +241,21 @@ tigaRshrinkSeq <- function(form,
               }
               else {
                 pmlist <- c(pmlist, 
-                            list(muaddfixed = addfixed[[1]][1], 
-                                 precaddfixed = addfixed[[1]][2]))
+                            list(muaddfixed=addfixed[[1]][1], 
+                                 precaddfixed=addfixed[[1]][2]))
               }
               pmlist <- c(pmlist, 
-                          list(shaperand = randomprec[1],
-                               raterand = randomprec[2])
+                          list(shaperand=randomprec[1],
+                               raterand=randomprec[2])
               )
               elsr <- length(shrinkaddrandom)
               if (!is.null(shrinkaddrandom)) {
                 for (i in 1:elsr) {
                   addr <- addrandomprec
-                  name <- c(paste("shape", shrinkaddrandom[i], sep = ""), 
-                            paste("rate", shrinkaddrandom[i], sep = ""))
-                  toadd <- list(shapeaddr = addr[1],
-                                rateaddr = addr[2]
+                  name <- c(paste("shape", shrinkaddrandom[i], sep=""), 
+                            paste("rate", shrinkaddrandom[i], sep=""))
+                  toadd <- list(shapeaddr=addr[1],
+                                rateaddr=addr[2]
                   )
                   names(toadd) <- name
                   pmlist <- c(pmlist, toadd)
@@ -263,28 +263,28 @@ tigaRshrinkSeq <- function(form,
               }
               else {
                 pmlist <- c(pmlist, 
-                            list(shapeaddr = addrandomprec[1], 
-                                 rateaddr = addrandomprec[2])
+                            list(shapeaddr=addrandomprec[1], 
+                                 rateaddr=addrandomprec[2])
                 )
               }
               pmlist <- c(pmlist,
-                          list(mup0 = logitp0[1], 
-                               precp0 = logitp0[2])
+                          list(mup0=logitp0[1], 
+                               precp0=logitp0[2])
               )
               pmlist <- c(pmlist,
-                          list(mudisp = logdisp[1],
-                               precdisp = logdisp[2], 
-                               mixp = diracprob)
+                          list(mudisp=logdisp[1],
+                               precdisp=logdisp[2], 
+                               mixp=diracprob)
               )
               print(pmlist)
               ntagused <- NA
               paraprev <- c(unlist(pmlist), 
-                            nfeat = NA, 
-                            meanmlik = NA
+                            nfeat=NA, 
+                            meanmlik=NA
               )
               paraall <- paraprev
               ksall <- c()
-              cf <- list(mean = 0, prec = 0.01)
+              cf <- list(mean=0, prec=0.01)
               
               if (curvedisp) {
                 print(paste("Fitting curve based on", 
@@ -317,26 +317,26 @@ tigaRshrinkSeq <- function(form,
                 
                 if (!is.null(dat1)) {
                   CNdatashrinkj <- dat1[sel, ]}
-                else {CNdatashrinkj = NULL}
+                else {CNdatashrinkj=NULL}
                 famsj <- fams[sel]
                 
-                fitallinit <- fitINLAtigaR(forms = form, 
-                                           dat = datshrinkj,
-                                           dat1 = CNdatashrinkj,
-                                           timefac = timefac,
-                                           groupfac = groupfac,
-                                           ZSpline = ZSpline,
-                                           fams = famsj,
-                                           logdisp = logdisp, 
-                                           logitp0 = logitp0,
-                                           cf = cf,
-                                           control.compute = list(dic = F, 
-                                                                  mlik = T, 
-                                                                  cpo = F), 
-                                           curvedispfun = NULL,
-                                           orthogonal = FALSE, 
-                                           shrink = FALSE,
-                                           multivar = FALSE,
+                fitallinit <- fitINLAtigaR(forms=form, 
+                                           dat=datshrinkj,
+                                           dat1=CNdatashrinkj,
+                                           timefac=timefac,
+                                           groupfac=groupfac,
+                                           ZSpline=ZSpline,
+                                           fams=famsj,
+                                           logdisp=logdisp, 
+                                           logitp0=logitp0,
+                                           cf=cf,
+                                           control.compute=list(dic=F, 
+                                                                  mlik=T, 
+                                                                  cpo=F), 
+                                           curvedispfun=NULL,
+                                           orthogonal=FALSE, 
+                                           shrink=FALSE,
+                                           multivar=FALSE,
                                            rho=0, ...)
                 logsums <- log(apply(datshrinkj, 1, sum))
                 logdisps <- unlist(lapply(fitallinit, function(ex) {
@@ -355,10 +355,10 @@ tigaRshrinkSeq <- function(form,
                 }
                 predLoess <- function(logDisp, logTotalCounts) {
                   fit <- loess(logDisp ~ logTotalCounts, 
-                               span = 0.75, 
-                               degree = 2
+                               span=0.75, 
+                               degree=2
                   )
-                  fun = function(x) {
+                  fun=function(x) {
                     if (x <= min(logsums)) 
                       x <- min(logsums)
                     if (x >= max(logsums)) 
@@ -421,11 +421,11 @@ tigaRshrinkSeq <- function(form,
                     excludefornull <- NULL
                     print("Point mass has zero mass...fitting full model only.")
                   }
-                  cf <- list(mean = list(default = 0), 
-                             prec = list(default = 0.01)
+                  cf <- list(mean=list(default=0), 
+                             prec=list(default=0.01)
                   )
                   if (!is.null(shrinkfixed)) {
-                    if (is.factor(try(get(shrinkfixed), silent = TRUE))) 
+                    if (is.factor(try(get(shrinkfixed), silent=TRUE))) 
                       shrinkfixed <- fact2vec(shrinkfixed)
                     nm <- names(cf[[1]])
                     for (j1 in 1:length(shrinkfixed)) {
@@ -440,7 +440,7 @@ tigaRshrinkSeq <- function(form,
                       shrinkaddfixedi <- shrinkaddfixed[i]
                       addfixedi <- as.numeric(addfixed[[i]])
                       nm <- names(cf[[1]])
-                      if (is.factor(try(get(shrinkaddfixedi), silent = TRUE))) 
+                      if (is.factor(try(get(shrinkaddfixedi), silent=TRUE))) 
                         shrinkaddfixedi <- fact2vec(shrinkaddfixedi)
                       for (j1 in 1:length(shrinkaddfixedi)) {
                         cf$mean <- c(cf$mean, list(addfixedi[1]))
@@ -488,56 +488,56 @@ tigaRshrinkSeq <- function(form,
                                                    ngenej))
                   if (!is.null(dat1)) {
                     CNdatashrinkj <- dat1[sel, ]}
-                  else {CNdatashrinkj = NULL}
-                  fitall <- fitINLAtigaR(forms = form,
-                                         dat = datshrinkj, 
-                                         dat1 = CNdatashrinkj,
-                                         timefac = timefac,
-                                         groupfac = groupfac,
-                                         ZSpline = ZSpline,
-                                         fams = famsj, 
-                                         logdisp = logdisp, 
-                                         curvedispfun = curvedispfun,
-                                         logitp0 = logitp0, 
-                                         cf = cf, 
-                                         control.compute = list(dic = F,
-                                                                mlik = T, 
-                                                                cpo = F),
-                                         ndigits = 5,
-                                         orthogonal = FALSE, 
-                                         shrink = FALSE,
-                                         multivar = FALSE,
-                                         rho = 0, ...)
+                  else {CNdatashrinkj=NULL}
+                  fitall <- fitINLAtigaR(forms=form,
+                                         dat=datshrinkj, 
+                                         dat1=CNdatashrinkj,
+                                         timefac=timefac,
+                                         groupfac=groupfac,
+                                         ZSpline=ZSpline,
+                                         fams=famsj, 
+                                         logdisp=logdisp, 
+                                         curvedispfun=curvedispfun,
+                                         logitp0=logitp0, 
+                                         cf=cf, 
+                                         control.compute=list(dic=F,
+                                                                mlik=T, 
+                                                                cpo=F),
+                                         ndigits=5,
+                                         orthogonal=FALSE, 
+                                         shrink=FALSE,
+                                         multivar=FALSE,
+                                         rho=0, ...)
                   mliksall <- mliks(fitall)
                   if (mixtdisp) {
-                    fitalldisp0 <- fitINLAtigaR(forms = form,
-                                                dat = datshrinkj, 
-                                                dat1 = CNdatashrinkj,
-                                                timefac = timefac,
-                                                groupfac = groupfac,
-                                                ZSpline = ZSpline,
-                                                fams = famsjdisp0,
-                                                logdisp = logdisp,
-                                                curvedispfun = curvedispfun, 
-                                                logitp0 = logitp0,
-                                                control.compute = list(dic = F, 
-                                                                       mlik = T, 
-                                                                       cpo = F), 
-                                                cf = cf,
-                                                ndigits = 5,
-                                                orthogonal = FALSE, 
-                                                shrink = FALSE,
-                                                multivar = FALSE,
-                                                rho = 0, ...)
+                    fitalldisp0 <- fitINLAtigaR(forms=form,
+                                                dat=datshrinkj, 
+                                                dat1=CNdatashrinkj,
+                                                timefac=timefac,
+                                                groupfac=groupfac,
+                                                ZSpline=ZSpline,
+                                                fams=famsjdisp0,
+                                                logdisp=logdisp,
+                                                curvedispfun=curvedispfun, 
+                                                logitp0=logitp0,
+                                                control.compute=list(dic=F, 
+                                                                       mlik=T, 
+                                                                       cpo=F), 
+                                                cf=cf,
+                                                ndigits=5,
+                                                orthogonal=FALSE, 
+                                                shrink=FALSE,
+                                                multivar=FALSE,
+                                                rho=0, ...)
                     mliksall0 <- mliks(fitalldisp0)
                     if (!is.null(shrinkfixed)) 
                       postfixed <- fitinlacombine(list(fitalldisp0, 
                                                        fitall),
-                                                  probs = diracprob,
-                                                  modus = "fixed", 
-                                                  para = shrinkfixed,
-                                                  nsam = nsamtagfixed, 
-                                                  safemode = safemode
+                                                  probs=diracprob,
+                                                  modus="fixed", 
+                                                  para=shrinkfixed,
+                                                  nsam=nsamtagfixed, 
+                                                  safemode=safemode
                       )
                     if (!is.null(shrinkaddfixed)) {
                       postaddfixed <- list()
@@ -545,11 +545,11 @@ tigaRshrinkSeq <- function(form,
                         shrinkaddfixedi <- shrinkaddfixed[i]
                         postaddfixedi <- fitinlacombine(list(fitalldisp0, 
                                                              fitall),
-                                                        probs = diracprob,
-                                                        modus = "fixed", 
-                                                        para = shrinkaddfixedi,
-                                                        nsam = nsamtagfixed, 
-                                                        safemode = safemode
+                                                        probs=diracprob,
+                                                        modus="fixed", 
+                                                        para=shrinkaddfixedi,
+                                                        nsam=nsamtagfixed, 
+                                                        safemode=safemode
                         )
                         postaddfixed <- c(postaddfixed, list(postaddfixedi))
                       }
@@ -557,11 +557,11 @@ tigaRshrinkSeq <- function(form,
                     if (!is.null(shrinkrandom)) 
                       postrandom <- fitinlacombine(list(fitalldisp0, 
                                                         fitall),
-                                                   probs = diracprob,
-                                                   modus = "random", 
-                                                   para = shrinkrandom, 
-                                                   nsam = nsamtag, 
-                                                   safemode = safemode
+                                                   probs=diracprob,
+                                                   modus="random", 
+                                                   para=shrinkrandom, 
+                                                   nsam=nsamtag, 
+                                                   safemode=safemode
                       )
                     if (!is.null(shrinkaddrandom)) {
                       postaddrandom <- list()
@@ -569,11 +569,11 @@ tigaRshrinkSeq <- function(form,
                         shrinkaddrandomi <- shrinkaddrandom[i]
                         postaddrandomi <- fitinlacombine(list(fitalldisp0,
                                                               fitall), 
-                                                         probs = diracprob,
-                                                         modus = "random", 
-                                                         para = shrinkaddrandomi, 
-                                                         nsam = nsamtag, 
-                                                         safemode = safemode
+                                                         probs=diracprob,
+                                                         modus="random", 
+                                                         para=shrinkaddrandomi, 
+                                                         nsam=nsamtag, 
+                                                         safemode=safemode
                         )
                         postaddrandom <- c(postaddrandom, list(postaddrandomi))
                       }
@@ -581,40 +581,40 @@ tigaRshrinkSeq <- function(form,
                     if (shrinkp0) 
                       postp0 <- fitinlacombine(list(fitalldisp0, 
                                                     fitall), 
-                                               probs = diracprob,
-                                               modus = "p0", 
-                                               nsam = nsamtag,
-                                               safemode = safemode
+                                               probs=diracprob,
+                                               modus="p0", 
+                                               nsam=nsamtag,
+                                               safemode=safemode
                       )
                     if (shrinkdisp) 
                       postdisp <- fitinlacombine(list(fitalldisp0, 
                                                       fitall), 
-                                                 probs = diracprob,
-                                                 modus = "disp", 
-                                                 nsam = nsamtag,
-                                                 safemode = safemode
+                                                 probs=diracprob,
+                                                 modus="disp", 
+                                                 nsam=nsamtag,
+                                                 safemode=safemode
                       )
                   }
                   if (mixtrand) {
                     fitallrand0 <- FitInlaAll(formrand0, 
                                               datshrinkj, 
-                                              logdisp = logdisp, 
-                                              curvedispfun = curvedispfun, 
-                                              logitp0 = logitp0, 
-                                              control.compute = list(dic = F, 
-                                                                     mlik = T, 
-                                                                     cpo = F), 
-                                              cf = cf, 
-                                              ndigits = 5, ...)
+                                              logdisp=logdisp, 
+                                              curvedispfun=curvedispfun, 
+                                              logitp0=logitp0, 
+                                              control.compute=list(dic=F, 
+                                                                     mlik=T, 
+                                                                     cpo=F), 
+                                              cf=cf, 
+                                              ndigits=5, ...)
                     mliksall0 <- mliks(fitallrand0)
                     if (!is.null(shrinkfixed)) 
                       postfixed <- fitinlacombine(list(fitallrand0,
                                                        fitall),
-                                                  probs = diracprob,
-                                                  modus = "fixed", 
-                                                  para = shrinkfixed,
-                                                  nsam = nsamtagfixed, 
-                                                  safemode = safemode
+                                                  probs=diracprob,
+                                                  modus="fixed", 
+                                                  para=shrinkfixed,
+                                                  nsam=nsamtagfixed, 
+                                                  safemode=safemode
                       )
                     if (!is.null(shrinkaddfixed)) {
                       postaddfixed <- list()
@@ -622,11 +622,11 @@ tigaRshrinkSeq <- function(form,
                         shrinkaddfixedi <- shrinkaddfixed[[i]]
                         postaddfixedi <- fitinlacombine(list(fitallrand0, 
                                                              fitall),
-                                                        probs = diracprob,
-                                                        modus = "fixed", 
-                                                        para = shrinkaddfixedi,
-                                                        nsam = nsamtagfixed, 
-                                                        safemode = safemode
+                                                        probs=diracprob,
+                                                        modus="fixed", 
+                                                        para=shrinkaddfixedi,
+                                                        nsam=nsamtagfixed, 
+                                                        safemode=safemode
                         )
                         postaddfixed <- c(postaddfixed, list(postaddfixedi))
                       }
@@ -634,11 +634,11 @@ tigaRshrinkSeq <- function(form,
                     if (!is.null(shrinkrandom)) 
                       postrandom <- fitinlacombine(list(fitallrand0, 
                                                         fitall), 
-                                                   probs = diracprob,
-                                                   modus = "random", 
-                                                   para = shrinkrandom,
-                                                   nsam = nsamtag, 
-                                                   safemode = safemode
+                                                   probs=diracprob,
+                                                   modus="random", 
+                                                   para=shrinkrandom,
+                                                   nsam=nsamtag, 
+                                                   safemode=safemode
                       )
                     if (!is.null(shrinkaddrandom)) {
                       postaddrandom <- list()
@@ -646,11 +646,11 @@ tigaRshrinkSeq <- function(form,
                         shrinkaddrandomi <- shrinkaddrandom[i]
                         postaddrandomi <- fitinlacombine(list(fitallrand0, 
                                                               fitall), 
-                                                         probs = diracprob,
-                                                         modus = "random", 
-                                                         para = shrinkaddrandomi,
-                                                         nsam = nsamtag, 
-                                                         safemode = safemode
+                                                         probs=diracprob,
+                                                         modus="random", 
+                                                         para=shrinkaddrandomi,
+                                                         nsam=nsamtag, 
+                                                         safemode=safemode
                         )
                         postaddrandom <- c(postaddrandom, list(postaddrandomi))
                       }
@@ -658,19 +658,19 @@ tigaRshrinkSeq <- function(form,
                     if (shrinkp0) 
                       postp0 <- fitinlacombine(list(fitallrand0, 
                                                     fitall),
-                                               probs = diracprob,
-                                               modus = "p0", 
-                                               nsam = nsamtag,
-                                               safemode = safemode
+                                               probs=diracprob,
+                                               modus="p0", 
+                                               nsam=nsamtag,
+                                               safemode=safemode
                       )
                     if (shrinkdisp) 
                       if (is.null(curvedispfun)) {
                         postdisp <- fitinlacombine(list(fitallrand0, 
                                                         fitall), 
-                                                   probs = diracprob,
-                                                   modus = "disp", 
-                                                   nsam = nsamtag,
-                                                   safemode = safemode
+                                                   probs=diracprob,
+                                                   modus="disp", 
+                                                   nsam=nsamtag,
+                                                   safemode=safemode
                         )
                       }
                     else {
@@ -678,34 +678,34 @@ tigaRshrinkSeq <- function(form,
                                           curvedispfun)
                       postdisp <- fitinlacombine(list(fitallrand0, 
                                                       fitall),
-                                                 probs = diracprob,
-                                                 modus = "disp", 
-                                                 nsam = nsamtag,
-                                                 curvepred = curvepred, 
-                                                 safemode = safemode
+                                                 probs=diracprob,
+                                                 modus="disp", 
+                                                 nsam=nsamtag,
+                                                 curvepred=curvepred, 
+                                                 safemode=safemode
                       )
                     }
                   }
                   if (!is.null(excludefornull)) {
                     fitall0 <- FitInlaAll(form0, 
                                           datshrinkj,
-                                          logdisp = logdisp, 
-                                          curvedispfun = curvedispfun,
-                                          logitp0 = logitp0, 
-                                          control.compute = list(dic = F,
-                                                                 mlik = T,
-                                                                 cpo = F), 
-                                          cf = cf, 
-                                          ndigits = 5, ...)
+                                          logdisp=logdisp, 
+                                          curvedispfun=curvedispfun,
+                                          logitp0=logitp0, 
+                                          control.compute=list(dic=F,
+                                                                 mlik=T,
+                                                                 cpo=F), 
+                                          cf=cf, 
+                                          ndigits=5, ...)
                     mliksall0 <- mliks(fitall0)
                     if (!is.null(shrinkfixed)) 
                       postfixed <- fitinlacombine(list(fitall0,
                                                        fitall), 
-                                                  probs = diracprob,
-                                                  modus = "fixed", 
-                                                  para = shrinkfixed, 
-                                                  nsam = nsamtagfixed,
-                                                  safemode = safemode
+                                                  probs=diracprob,
+                                                  modus="fixed", 
+                                                  para=shrinkfixed, 
+                                                  nsam=nsamtagfixed,
+                                                  safemode=safemode
                       )
                     if (!is.null(shrinkaddfixed)) {
                       postaddfixed <- list()
@@ -713,11 +713,11 @@ tigaRshrinkSeq <- function(form,
                         shrinkaddfixedi <- shrinkaddfixed[[i]]
                         postaddfixedi <- fitinlacombine(list(fitall0, 
                                                              fitall),
-                                                        probs = diracprob, 
-                                                        modus = "fixed", 
-                                                        para = shrinkaddfixedi,
-                                                        nsam = nsamtagfixed, 
-                                                        safemode = safemode
+                                                        probs=diracprob, 
+                                                        modus="fixed", 
+                                                        para=shrinkaddfixedi,
+                                                        nsam=nsamtagfixed, 
+                                                        safemode=safemode
                         )
                         postaddfixed <- c(postaddfixed, list(postaddfixedi))
                       }
@@ -725,11 +725,11 @@ tigaRshrinkSeq <- function(form,
                     if (!is.null(shrinkrandom)) 
                       postrandom <- fitinlacombine(list(fitall0, 
                                                         fitall), 
-                                                   probs = diracprob,
-                                                   modus = "random", 
-                                                   para = shrinkrandom,
-                                                   nsam = nsamtag, 
-                                                   safemode = safemode
+                                                   probs=diracprob,
+                                                   modus="random", 
+                                                   para=shrinkrandom,
+                                                   nsam=nsamtag, 
+                                                   safemode=safemode
                       )
                     if (!is.null(shrinkaddrandom)) {
                       postaddrandom <- list()
@@ -737,11 +737,11 @@ tigaRshrinkSeq <- function(form,
                         shrinkaddrandomi <- shrinkaddrandom[i]
                         postaddrandomi <- fitinlacombine(list(fitall0, 
                                                               fitall), 
-                                                         probs = diracprob, 
-                                                         modus = "random", 
-                                                         para = shrinkaddrandomi,
-                                                         nsam = nsamtag, 
-                                                         safemode = safemode
+                                                         probs=diracprob, 
+                                                         modus="random", 
+                                                         para=shrinkaddrandomi,
+                                                         nsam=nsamtag, 
+                                                         safemode=safemode
                         )
                         postaddrandom <- c(postaddrandom, list(postaddrandomi))
                       }
@@ -749,19 +749,19 @@ tigaRshrinkSeq <- function(form,
                     if (shrinkp0) 
                       postp0 <- fitinlacombine(list(fitall0, 
                                                     fitall), 
-                                               probs = diracprob,
-                                               modus = "p0", 
-                                               nsam = nsamtag, 
-                                               safemode = safemode
+                                               probs=diracprob,
+                                               modus="p0", 
+                                               nsam=nsamtag, 
+                                               safemode=safemode
                       )
                     if (shrinkdisp) 
                       if (is.null(curvedispfun)) {
                         postdisp <- fitinlacombine(list(fitall0, 
                                                         fitall),
-                                                   probs = diracprob,
-                                                   modus = "disp", 
-                                                   nsam = nsamtag, 
-                                                   safemode = safemode
+                                                   probs=diracprob,
+                                                   modus="disp", 
+                                                   nsam=nsamtag, 
+                                                   safemode=safemode
                         )
                       }
                     else {
@@ -769,78 +769,78 @@ tigaRshrinkSeq <- function(form,
                                           curvedispfun)
                       postdisp <- fitinlacombine(list(fitall0, 
                                                       fitall),
-                                                 probs = diracprob, 
-                                                 modus = "disp", 
-                                                 nsam = nsamtag, 
-                                                 curvepred = curvepred, 
-                                                 safemode = safemode
+                                                 probs=diracprob, 
+                                                 modus="disp", 
+                                                 nsam=nsamtag, 
+                                                 curvepred=curvepred, 
+                                                 safemode=safemode
                       )
                     }
                   }
                   if (!mixtrand & !mixtdisp & is.null(excludefornull)) {
                     if (!is.null(shrinkfixed)) 
                       postfixed <- fitinlacombine(list(fitall),
-                                                  modus = "fixed", 
-                                                  para = shrinkfixed, 
-                                                  nsam = nsamtagfixed
+                                                  modus="fixed", 
+                                                  para=shrinkfixed, 
+                                                  nsam=nsamtagfixed
                       )
                     if (!is.null(shrinkaddfixed)) {
                       postaddfixed <- list()
                       for (i in 1:els) {
                         shrinkaddfixedi <- shrinkaddfixed[i]
                         postaddfixedi <- fitinlacombine(list(fitall), 
-                                                        modus = "fixed",
-                                                        para = shrinkaddfixedi, 
-                                                        nsam = nsamtagfixed, 
-                                                        safemode = safemode
+                                                        modus="fixed",
+                                                        para=shrinkaddfixedi, 
+                                                        nsam=nsamtagfixed, 
+                                                        safemode=safemode
                         )
                         postaddfixed <- c(postaddfixed, list(postaddfixedi))
                       }
                     }
                     if (!is.null(shrinkrandom)) 
                       postrandom <- fitinlacombine(list(fitall), 
-                                                   modus = "random", 
-                                                   para = shrinkrandom,
-                                                   nsam = nsamtag
+                                                   modus="random", 
+                                                   para=shrinkrandom,
+                                                   nsam=nsamtag
                       )
                     if (!is.null(shrinkaddrandom)) {
                       postaddrandom <- list()
                       for (i in 1:elsr) {
                         shrinkaddrandomi <- shrinkaddrandom[i]
                         postaddrandomi <- fitinlacombine(list(fitall), 
-                                                         probs = diracprob, 
-                                                         modus = "random",
-                                                         para = shrinkaddrandomi, 
-                                                         nsam = nsamtag, 
-                                                         safemode = safemode
+                                                         probs=diracprob, 
+                                                         modus="random",
+                                                         para=shrinkaddrandomi, 
+                                                         nsam=nsamtag, 
+                                                         safemode=safemode
                         )
                         postaddrandom <- c(postaddrandom, list(postaddrandomi))
                       }
                     }
                     if (shrinkp0) 
                       postp0 <- fitinlacombine(list(fitall), 
-                                               modus = "p0", 
-                                               nsam = nsamtag
+                                               modus="p0", 
+                                               nsam=nsamtag
                       )
                     if (shrinkdisp) 
                       if (is.null(curvedispfun)) {
                         postdisp <- fitinlacombine(list(fitall), 
-                                                   modus = "disp",
-                                                   nsam = nsamtag
+                                                   modus="disp",
+                                                   nsam=nsamtag
                         )
                       }
                     else {
                       curvepred <- sapply(log(apply(datshrinkj, 1, sum)),
                                           curvedispfun)
                       postdisp <- fitinlacombine(list(fitall), 
-                                                 modus = "disp",
-                                                 nsam = nsamtag,
-                                                 curvepred = curvepred
+                                                 modus="disp",
+                                                 nsam=nsamtag,
+                                                 curvepred=curvepred
                       )
                     }
                   }
                   if (!mixtrand & !mixtdisp & is.null(excludefornull)) 
-                    mlikmean <- mean(mliksall, na.rm = T)
+                    mlikmean <- mean(mliksall, na.rm=T)
                   else {
                     whna <- union(which(is.na(mliksall)),
                                   which(is.na(mliksall0))
@@ -850,9 +850,9 @@ tigaRshrinkSeq <- function(form,
                       mliksall0 <- mliksall0[-whna]
                     }
                     if (diracprob[1] == 0) 
-                      mlikmean <- mean(mliksall, na.rm = T)
+                      mlikmean <- mean(mliksall, na.rm=T)
                     if (diracprob[2] == 0) 
-                      mlikmean <- mean(mliksall0, na.rm = T)
+                      mlikmean <- mean(mliksall0, na.rm=T)
                     if (diracprob[1] != 0 & diracprob[2] != 0) 
                       mlikmean <- mean(log(diracprob[2]) + 
                                          mliksall + 
@@ -861,7 +861,7 @@ tigaRshrinkSeq <- function(form,
                                                       mliksall0 - 
                                                       log(diracprob[2]) - 
                                                       mliksall))), 
-                                       na.rm = T
+                                       na.rm=T
                       )
                   }
                   mlikmeanall <- c(mlikmeanall, mlikmean)
@@ -903,12 +903,12 @@ tigaRshrinkSeq <- function(form,
                       maxlik <- as.numeric(apply(cbind(mlik, mlik0), 
                                                  1, max))
                       p0start <- length(which((mlik0 - mlik) > 0))/length(mlik)
-                      liktot <- function(p0 = 0.5) {
+                      liktot <- function(p0=0.5) {
                                    -sum(log(p0 * exp(mlik0 - maxlik) + 
                                    (1 - p0) * exp(mlik - maxlik)))
                       }
-                      res2 <- optimize(liktot, lower = 0, upper = 1, 
-                                       maximum = FALSE)
+                      res2 <- optimize(liktot, lower=0, upper=1, 
+                                       maximum=FALSE)
                       p0 <- res2$minimum
                     }
                     if (!is.null(shrinkfixed)) {
@@ -990,30 +990,30 @@ tigaRshrinkSeq <- function(form,
                       }
                     }
                     diracprob <- c(p0, 1 - p0)
-                    rn <- seq(-8, 8, by = 0.01)
-                    rnprec <- seq(-8, 1.5, by = 0.01)
+                    rn <- seq(-8, 8, by=0.01)
+                    rnprec <- seq(-8, 1.5, by=0.01)
                     if (!iselement2(inputpar$shrinkfixed, excludefornull)) {
                       KSfixed <- max(abs(pnorm(rn, 
-                                               mean = fixedprev[1], 
-                                               sd = sqrt(1/fixedprev[2])) - 
+                                               mean=fixedprev[1], 
+                                               sd=sqrt(1/fixedprev[2])) - 
                                            pnorm(rn, 
-                                                 mean = fixed[1], 
-                                                 sd = sqrt(1/fixed[2])))
+                                                 mean=fixed[1], 
+                                                 sd=sqrt(1/fixed[2])))
                       )
                     }
                     else {
                       KSfixed <- max(c(abs(diracprobprev[2] * pnorm(rn[rn < 0], 
-                                                                    mean = fixedprev[1], 
-                                                                    sd = sqrt(1/fixedprev[2])) - 
+                                                                    mean=fixedprev[1], 
+                                                                    sd=sqrt(1/fixedprev[2])) - 
                                            diracprob[2] * pnorm(rn[rn < 0],
-                                                                mean = fixed[1], 
-                                                                sd = sqrt(1/fixed[2]))),
+                                                                mean=fixed[1], 
+                                                                sd=sqrt(1/fixed[2]))),
                                            diracprobprev[2] * abs(pnorm(rn[rn >= 0],
-                                                                        mean = fixedprev[1], 
-                                                                        sd = sqrt(1/fixedprev[2]) + diracprobprev[1]) - 
+                                                                        mean=fixedprev[1], 
+                                                                        sd=sqrt(1/fixedprev[2]) + diracprobprev[1]) - 
                                           (diracprob[2] * pnorm(rn[rn >= 0], 
-                                                                mean = fixed[1], 
-                                                                sd = sqrt(1/fixed[2])) + +diracprob[1])))
+                                                                mean=fixed[1], 
+                                                                sd=sqrt(1/fixed[2])) + +diracprob[1])))
                       )
                     }
                     whi <- which(!iselement2(inputpar$shrinkaddfixed, 
@@ -1024,54 +1024,54 @@ tigaRshrinkSeq <- function(form,
                         addfixedprevi <- addfixedprev[[i]]
                         addfixedi <- addfixed[[i]]
                         KSaddfixedi <- max(c(abs(diracprobprev[2] * pnorm(rn[rn < 0], 
-                                                                          mean = addfixedprevi[1], 
-                                                                          sd = sqrt(1/addfixedprevi[2])) - 
+                                                                          mean=addfixedprevi[1], 
+                                                                          sd=sqrt(1/addfixedprevi[2])) - 
                                                  diracprob[2] * pnorm(rn[rn < 0],
-                                                                      mean = addfixedi[1], 
-                                                                      sd = sqrt(1/addfixedi[2]))),
+                                                                      mean=addfixedi[1], 
+                                                                      sd=sqrt(1/addfixedi[2]))),
                                                  diracprobprev[2] * abs(pnorm(rn[rn >= 0],
-                                                                              mean = addfixedprevi[1], 
-                                                                              sd = sqrt(1/addfixedprevi[2]) + diracprobprev[1]) - 
+                                                                              mean=addfixedprevi[1], 
+                                                                              sd=sqrt(1/addfixedprevi[2]) + diracprobprev[1]) - 
                                                 (diracprob[2] * pnorm(rn[rn >= 0],
-                                                                      mean = addfixedi[1], 
-                                                                      sd = sqrt(1/addfixedi[2])) + +diracprob[1])))
+                                                                      mean=addfixedi[1], 
+                                                                      sd=sqrt(1/addfixedi[2])) + +diracprob[1])))
                         )
                       })
                       KSmaxaddfixed <- max(KSaddfixedall)
                     }
                     KSlogdisp <- max(abs(pnorm(rn, 
-                                               mean = logdispprev[1], 
-                                               sd = sqrt(1/logdispprev[2])) - 
+                                               mean=logdispprev[1], 
+                                               sd=sqrt(1/logdispprev[2])) - 
                                            pnorm(rn, 
-                                                 mean = logdisp[1], 
-                                                 sd = sqrt(1/logdisp[2])))
+                                                 mean=logdisp[1], 
+                                                 sd=sqrt(1/logdisp[2])))
                     )
                     KSlogitp0 <- max(abs(pnorm(rn,
-                                               mean = logitp0prev[1], 
-                                               sd = sqrt(1/logitp0prev[2])) - 
+                                               mean=logitp0prev[1], 
+                                               sd=sqrt(1/logitp0prev[2])) - 
                                            pnorm(rn, 
-                                                 mean = logitp0[1], 
-                                                 sd = sqrt(1/logitp0[2])))
+                                                 mean=logitp0[1], 
+                                                 sd=sqrt(1/logitp0[2])))
                     )
                     if (!iselement2(inputpar$shrinkrandom, excludefornull) & 
                         !mixtrand) {
                       KSrandomprec <- max(abs(plgamma(rnprec, 
-                                                      location = 0, 
-                                                      scale = 1/randomprecprev[2], 
+                                                      location=0, 
+                                                      scale=1/randomprecprev[2], 
                                                       randomprecprev[1]) - 
                                                 plgamma(rnprec, 
-                                                        location = 0, 
-                                                        scale = 1/randomprec[2], 
+                                                        location=0, 
+                                                        scale=1/randomprec[2], 
                                                         randomprec[1]))
                       )
                     }
                     else {
                       KSrandomprec <- max(diracprobprev[2] * abs(plgamma(rnprec, 
-                                                                         location = 0, 
-                                                                         scale = 1/randomprecprev[2], 
+                                                                         location=0, 
+                                                                         scale=1/randomprecprev[2], 
                                                                          randomprecprev[1]) - 
-                                         diracprob[2] * plgamma(rnprec, location = 0, 
-                                                                scale = 1/randomprec[2], 
+                                         diracprob[2] * plgamma(rnprec, location=0, 
+                                                                scale=1/randomprec[2], 
                                                                 randomprec[1]))
                       )
                     }
@@ -1092,15 +1092,15 @@ tigaRshrinkSeq <- function(form,
                     randomprec <- as.numeric(randomprec)
                     logitp0 <- as.numeric(logitp0)
                     logdisp <- as.numeric(logdisp)
-                    pmlist <- c(pmlist, list(mufixed = fixed[1], 
-                                             precfixed = fixed[2]))
+                    pmlist <- c(pmlist, list(mufixed=fixed[1], 
+                                             precfixed=fixed[2]))
                     if (!is.null(shrinkaddfixed)) {
                       for (i in 1:els) {
                         addf <- as.numeric(addfixed[[i]])
-                        name <- c(paste("mu", shrinkaddfixed[i], sep = ""), 
-                                  paste("prec", shrinkaddfixed[i], sep = ""))
-                        toadd <- list(muaddfixed = addf[1],
-                                      precaddfixed = addf[2]
+                        name <- c(paste("mu", shrinkaddfixed[i], sep=""), 
+                                  paste("prec", shrinkaddfixed[i], sep=""))
+                        toadd <- list(muaddfixed=addf[1],
+                                      precaddfixed=addf[2]
                         )
                         names(toadd) <- name
                         pmlist <- c(pmlist, toadd)
@@ -1108,22 +1108,22 @@ tigaRshrinkSeq <- function(form,
                     }
                     else {
                       pmlist <- c(pmlist, 
-                                  list(muaddfixed = addfixed[[1]][1], 
-                                       precaddfixed = addfixed[[1]][2])
+                                  list(muaddfixed=addfixed[[1]][1], 
+                                       precaddfixed=addfixed[[1]][2])
                       )
                     }
                     pmlist <- c(pmlist, 
-                                list(shaperand = randomprec[1], 
-                                     raterand = randomprec[2])
+                                list(shaperand=randomprec[1], 
+                                     raterand=randomprec[2])
                     )
                     if (!is.null(shrinkaddrandom)) {
                       for (i in 1:elsr) {
                         addr <- as.numeric(addrandom[[i]])
-                        name <- c(paste("shape", shrinkaddrandom[i], sep = ""),
-                                  paste("rate", shrinkaddrandom[i], sep = "")
+                        name <- c(paste("shape", shrinkaddrandom[i], sep=""),
+                                  paste("rate", shrinkaddrandom[i], sep="")
                         )
-                        toadd <- list(shapeaddr = addr[1],
-                                      rateaddr = addr[2]
+                        toadd <- list(shapeaddr=addr[1],
+                                      rateaddr=addr[2]
                         )
                         names(toadd) <- name
                         pmlist <- c(pmlist, toadd)
@@ -1131,22 +1131,22 @@ tigaRshrinkSeq <- function(form,
                     }
                     else {
                       pmlist <- c(pmlist, 
-                                  list(shapeaddr = addrandomprec[1], 
-                                       rateaddr = addrandomprec[2])
+                                  list(shapeaddr=addrandomprec[1], 
+                                       rateaddr=addrandomprec[2])
                       )
                     }
                     pmlist <- c(pmlist, 
-                                list(mup0 = logitp0[1],
-                                     precp0 = logitp0[2])
+                                list(mup0=logitp0[1],
+                                     precp0=logitp0[2])
                     )
                     pmlist <- c(pmlist, 
-                                list(mudisp = logdisp[1], 
-                                     precdisp = logdisp[2],
-                                     mixp = diracprob)
+                                list(mudisp=logdisp[1], 
+                                     precdisp=logdisp[2],
+                                     mixp=diracprob)
                     )
                     paranew <- c(unlist(pmlist), 
-                                 nfeat = ngenej, 
-                                 meanmlik = mlikmean)
+                                 nfeat=ngenej, 
+                                 meanmlik=mlikmean)
                     paraall <- rbind(paraall, paranew)
                   }
                   print(paranew)
@@ -1160,14 +1160,14 @@ tigaRshrinkSeq <- function(form,
                   paraprev <- paranew
                 }
               }
-              ret <- list(pmlist = pmlist,
-                          ksall = ksall, 
-                          paraall = paraall, 
-                          curvedispfun = curvedispfun, 
-                          inputpar = inputpar, 
-                          addfixed = addfixed, 
-                          addrandom = addrandom,
-                          typelik = "count")
+              ret <- list(pmlist=pmlist,
+                          ksall=ksall, 
+                          paraall=paraall, 
+                          curvedispfun=curvedispfun, 
+                          inputpar=inputpar, 
+                          addfixed=addfixed, 
+                          addrandom=addrandom,
+                          typelik="count")
               return(ret)
 }
 

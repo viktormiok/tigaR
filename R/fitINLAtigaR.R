@@ -6,31 +6,31 @@
 
 fitINLAtigaR <- function (forms, 
                           dat,
-                          dat1 = NULL, 
+                          dat1=NULL, 
                           timefac,
                           groupfac, 
                           ZSpline, 
-                          fams = "zinb",
+                          fams="zinb",
                           shrinksimul,
-                          logdisp = c(0, 0.01),
-                          precerr = c(1, 10^(-5)),
-                          curvedispfun = NULL, 
-                          logitp0 = c(0, 0.01),
-                          ncpus = 2, 
-                          effoutput = TRUE, 
-                          keepmargrand = FALSE,
-                          keepmarghyper = TRUE, 
-                          setthreads1 = TRUE, 
-                          showupdate = FALSE, 
-                          silentINLA = 2L, 
-                          updateby = 5000,
-                          ndigits = 5, 
-                          addpackage = NULL,
-                          safemode = TRUE, 
-                          cf = NULL,
-                          orthogonal = FALSE, 
-                          shrink = FALSE,
-                          multivar = FALSE,
+                          logdisp=c(0, 0.01),
+                          precerr=c(1, 10^(-5)),
+                          curvedispfun=NULL, 
+                          logitp0=c(0, 0.01),
+                          ncpus=2, 
+                          effoutput=TRUE, 
+                          keepmargrand=FALSE,
+                          keepmarghyper=TRUE, 
+                          setthreads1=TRUE, 
+                          showupdate=FALSE, 
+                          silentINLA=2L, 
+                          updateby=5000,
+                          ndigits=5, 
+                          addpackage=NULL,
+                          safemode=TRUE, 
+                          cf=NULL,
+                          orthogonal=FALSE, 
+                          shrink=FALSE,
+                          multivar=FALSE,
                           rho=0, ...){
           if (!is(forms, "formula")) {
             stop("Input (forms) is of wrong class.")
@@ -117,8 +117,8 @@ fitINLAtigaR <- function (forms,
           if (length(fams == 1)) 
             fams <- rep(fams, ngene)
           if (is.null(cf)) 
-            cf <- list(prec.intercept = 0.001)
-          else cf <- c(cf, prec.intercept = 0.001)
+            cf <- list(prec.intercept=0.001)
+          else cf <- c(cf, prec.intercept=0.001)
           form <- forms[[1]]
           frmchr <- as.character(form)[[3]]
           sp <- strsplit(frmchr, "\\+")
@@ -126,7 +126,7 @@ fitINLAtigaR <- function (forms,
             gsub(" ", "", tt)
           }))
           wht <- which(!is.na(match(sp, 
-                                    objects(envir = .GlobalEnv)))
+                                    objects(envir=.GlobalEnv)))
           )
           if (length(wht) > 0) {
             sp2 <- sp[wht]
@@ -151,15 +151,15 @@ fitINLAtigaR <- function (forms,
           fitinlaseqi <- function(i, ...) {
             print(i)
             form <- forms[[i]]
-            fam = fams[i]
+            fam=fams[i]
             di <- as.numeric(dat[i, ])
             
             if (dim(dfr)[1] == 0){ 
-              dattag <- data.frame(y = di, 
+              dattag <- data.frame(y=di, 
                                    timefac,
                                    groupfac
               )
-            }else{dattag <- cbind(data.frame(y = di),
+            }else{dattag <- cbind(data.frame(y=di),
                                   dfr,
                                   timefac,
                                   groupfac
@@ -169,35 +169,35 @@ fitINLAtigaR <- function (forms,
             if(!is.null(dat1)){
               d1i <- as.numeric(dat1[i, ])
               if (dim(dfr)[1] == 0){ 
-                dattag <- data.frame(y = di, 
-                                     x = d1i,
+                dattag <- data.frame(y=di, 
+                                     x=d1i,
                                      timefac,
                                      groupfac
                 )
-              }else{dattag <- cbind(data.frame(y = di),
+              }else{dattag <- cbind(data.frame(y=di),
                                     dfr,
-                                    x = d1i,
+                                    x=d1i,
                                     timefac,
                                     groupfac
               )
               }
             }
             if(orthogonal){
-              ZSpline = ZSpline -
+              ZSpline=ZSpline -
                 (d1i%*%(solve(t(d1i)%*%d1i))%*%(t(d1i)%*%ZSpline))
               if(shrink){
-                param = c(shrinksimul$inputpar$randomprec[1],
-                          shrinksimul$inputpar$randomprec[2])
+                param=c(shrinksimul$inputpar$randomprec[1],
+                        shrinksimul$inputpar$randomprec[2])
               } else {
-                param = c(shrinksimul$pmlist$shaperand,
+                param=c(shrinksimul$pmlist$shaperand,
                           shrinksimul$pmlist$raterand)
               }
               form <- y ~ groupfac + x + f(timefac,
-                                           model = "z",
-                                           Z = ZSpline,
-                                           initial = 3,
-                                           prior = "loggamma",
-                                           param = param
+                                           model="z",
+                                           Z=ZSpline,
+                                           initial=3,
+                                           prior="loggamma",
+                                           param=param
               )
             }
             if (!is.null(curvedispfun)) {
@@ -208,46 +208,46 @@ fitINLAtigaR <- function (forms,
               logdispi <- logdisp
             }
             if (fam == "zinb") {
-              faminla = "zeroinflatednbinomial1"
-              cd <- list(prior = c("gaussian", "gaussian"), 
-                         param = c(logdispi, logitp0)
+              faminla="zeroinflatednbinomial1"
+              cd <- list(prior=c("gaussian", "gaussian"), 
+                         param=c(logdispi, logitp0)
               )
             }
             if (fam == "zip") {
-              faminla = "zeroinflatedpoisson1"
-              cd <- list(prior = "gaussian", 
-                         param = logitp0
+              faminla="zeroinflatedpoisson1"
+              cd <- list(prior="gaussian", 
+                         param=logitp0
               )
             }
             if (fam == "nb") {
-              faminla = "nbinomial"
-              cd <- list(prior = "gaussian",
-                         param = logdispi
+              faminla="nbinomial"
+              cd <- list(prior="gaussian",
+                         param=logdispi
               )
             }
             if (fam == "poisson") {
-              faminla = "poisson"
+              faminla="poisson"
               cd <- list()
             }
             if (fam == "gaussian") {
-              faminla = "gaussian"
-              cd = list(hyper = list(prec = list(prior = "loggamma", 
-                                                 param = precerr)))
+              faminla="gaussian"
+              cd=list(hyper=list(prec=list(prior="loggamma", 
+                                                 param=precerr)))
             }
             INLA:::inla.dynload.workaround()
-            result <- try(inla(formula = form,
-                               family = faminla, 
-                               data = dattag, 
-                               control.family = cd, 
-                               silent = silentINLA, 
-                               control.fixed = cf, ...))
+            result <- try(inla(formula=form,
+                               family=faminla, 
+                               data=dattag, 
+                               control.family=cd, 
+                               silent=silentINLA, 
+                               control.fixed=cf, ...))
             if (class(result) == "try-error") 
               result <- NULL
             
             if (is.null(result$mlik)) {
               if ((faminla == "nbinomial" | faminla == "zeroinflatednbinomial1") & 
-                  max(di, na.rm = T) > 10^5) {
-                maxval <- max(di, na.rm = T)
+                  max(di, na.rm=T) > 10^5) {
+                maxval <- max(di, na.rm=T)
                 if (maxval > 10^7) 
                   di <- round(di/1000)
                 if (maxval > 10^6 & maxval <= 10^7) 
@@ -255,22 +255,22 @@ fitINLAtigaR <- function (forms,
                 if (maxval > 10^5 & maxval <= 10^6) 
                   di <- round(di/10)
                 if (dim(dfr)[1] == 0) 
-                  dattag <- data.frame(y = di)
-                else dattag <- cbind(data.frame(y = di), dfr)
+                  dattag <- data.frame(y=di)
+                else dattag <- cbind(data.frame(y=di), dfr)
                 INLA:::inla.dynload.workaround()
-                result <- try(inla(formula = form, 
-                                   family = faminla, 
-                                   data = dattag, 
-                                   control.family = cd,
-                                   silent = silentINLA, 
-                                   control.fixed = cf, ...))
+                result <- try(inla(formula=form, 
+                                   family=faminla, 
+                                   data=dattag, 
+                                   control.family=cd,
+                                   silent=silentINLA, 
+                                   control.fixed=cf, ...))
               }
             }
             if (class(result) == "try-error") 
               result <- NULL
             else {
               if (effoutput) {
-                nm = names(result)
+                nm=names(result)
                 todel <- c(".control.defaults", "control.inla", 
                            "model.matrix", "lincomb",
                            "control.expert", "control.mode", 
@@ -346,9 +346,9 @@ fitINLAtigaR <- function (forms,
               if (is.list(result)) 
                 result <- rapply(result, 
                                  signif, 
-                                 digits = ndigits, 
-                                 how = "replace", 
-                                 classes = "matrix"
+                                 digits=ndigits, 
+                                 how="replace", 
+                                 classes="matrix"
                 )
             }
             return(list(result))
@@ -357,22 +357,22 @@ fitINLAtigaR <- function (forms,
             results <- sapply(1:ngene, fitinlaseqi, ...)
           }
           else {
-            sfInit(parallel = TRUE, cpus = ncpus)
+            sfInit(parallel=TRUE, cpus=ncpus)
             sfLibrary(INLA)
             if (!is.null(addpackage)) {
               for (i in 1:length(addpackage)) {
                 api <- addpackage[i]
-                sfLibrary(api, character.only = TRUE)
+                sfLibrary(api, character.only=TRUE)
               }
             }
             print("Exporting to slaves")
-            mysfExport(forceexport = c("dat"))
-            mysfExport(forceexport = c("dat1"))
+            mysfExport(forceexport=c("dat"))
+            mysfExport(forceexport=c("dat1"))
             print("Exporting done")
             print("Started fitting")
             if (showupdate & updateby < ngene) {
               results <- as.list(rep(NA, ngene))
-              sec <- seq(1, ngene, by = updateby)
+              sec <- seq(1, ngene, by=updateby)
               secl <- length(sec)
               if (sec[secl] > ngene - 2) 
                 sec[secl] <- ngene + 1
