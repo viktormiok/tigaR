@@ -35,5 +35,8 @@ Publications related to `tigaR` include:
 
 - Babion, I., Miok, V., Jaspers, A., Huseinovic, A., Steenbergen, R.D., van Wieringen, W.N., Wilting, S.M. (2020), "Identification of Deregulated Pathways, Key Regulators, and Novel miRNA-mRNA Interactions in HPV-Mediated Transformation", *Cancers*, 12(3), 700. ([doi.org/10.3390/cancers12030700](https://doi.org/10.3390/cancers12030700)).
 
+- Babion, I., Miok, V., Jaspers, A., van Wieringen, W.N., Steenbergen, R.D., Wilting, S.M. (2018), "Comprehensive molecular profiling of HPV-induced transformation over time", *Cancer Research*, 12(3), 700. ([https://cancerres.aacrjournals.org/content/78/13_Supplement/5059.short](https://cancerres.aacrjournals.org/content/78/13_Supplement/5059.short)).
+
+
 Please cite the relevant publications if you use `tigaR`.
 
