@@ -6,8 +6,10 @@ The temporal variation in gene expression is described by a generalised linear m
 
 With the proposed R-package for analysis of time-course multilevel molecular continuous (microarray) and count (RNAseq) data, more profound insight may be gained through:
  - identification of temporal differentially gene expression, where method yields improvements in sensitivity, specificity and reproducibility compared to existing methods.
+ - employing same spline in modeling up/down regulated genes may be identifed over the cell lines, while using different splines more flexiblity may be allowed in capturing the temporal variation over time.
  - identification of temporal differential expression induced by DNA copy number abnormalities or/and miRNA expression levels.
  - identification of miRNA targets to the mRNA gene expression.
+[Model fit with the same and different spline](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-15-327/figures/1)
 
 Note: if you have a choice to use either Windows or Unix/Linux, opt for the latter. `tigaR` runs more efficiently under Unix/Linux than under Windows. NOTE:  when running `tigaR` you may see *** WARNINGS ***  from `INLA` (e.g. on eigenvalues, or on convergence, or even something like 18500 Aborted...). They can currently not be surpressed, because they are produced by C-code. Please ignore them. 
 
