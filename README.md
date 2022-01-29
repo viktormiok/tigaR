@@ -1,4 +1,12 @@
-# Scope
+|Docs| 
+
+[![Build Status](https://travis-ci.com/viktormiok/tigaR.svg?branch=master)](https://travis-ci.com/viktormiok/tigaR)
+
+.. |License| image:: https://img.shields.io/github/license/theislab/pertpy
+   :target: https://opensource.org/licenses/MIT
+   :alt: License
+
+# tigaR
 
 The R-package `tigaR` performs temporal integrative differential expression analysis of omics data, both sequencing counts RNAseq and continuous microarray data.
 
@@ -9,6 +17,7 @@ With the proposed R-package for analysis of time-course multilevel molecular con
  - employing same spline in modeling up/down regulated genes may be identifed over the cell lines, while using different splines more flexiblity may be allowed in capturing the temporal variation over time.
  - identification of temporal differential expression induced by DNA copy number abnormalities or/and miRNA expression levels.
  - identification of miRNA targets to the mRNA gene expression.
+ 
 image.png![image](https://user-images.githubusercontent.com/22052679/148564343-38e60761-cb5e-4e1d-966a-77e541a7d1e1.png)
 
 Note: if you have a choice to use either Windows or Unix/Linux, opt for the latter. `tigaR` runs more efficiently under Unix/Linux than under Windows. NOTE:  when running `tigaR` you may see *** WARNINGS ***  from `INLA` (e.g. on eigenvalues, or on convergence, or even something like 18500 Aborted...). They can currently not be surpressed, because they are produced by C-code. Please ignore them. 
