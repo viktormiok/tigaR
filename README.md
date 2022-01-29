@@ -1,10 +1,9 @@
-|Docs| 
+![version](https://img.shields.io/badge/version-1.1.0-blue) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/viktormiok/tigaR) ![GitHub issues](https://img.shields.io/github/issues/viktormiok/tigaR) ![dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-orange)  	![commit](https://img.shields.io/github/last-commit/viktormiok/tigaR) ![GitHub](https://img.shields.io/github/license/viktormiok/tigaR)
 
-[![Build Status](https://travis-ci.com/viktormiok/tigaR.svg?branch=master)](https://travis-ci.com/viktormiok/tigaR)
+[![Edit with Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/viktormiok/tigaR) 
 
-.. |License| image:: https://img.shields.io/github/license/theislab/pertpy
-   :target: https://opensource.org/licenses/MIT
-   :alt: License
+
+
 
 # tigaR
 
@@ -18,7 +17,9 @@ With the proposed R-package for analysis of time-course multilevel molecular con
  - identification of temporal differential expression induced by DNA copy number abnormalities or/and miRNA expression levels.
  - identification of miRNA targets to the mRNA gene expression.
  
+ 
 image.png![image](https://user-images.githubusercontent.com/22052679/148564343-38e60761-cb5e-4e1d-966a-77e541a7d1e1.png)
+
 
 Note: if you have a choice to use either Windows or Unix/Linux, opt for the latter. `tigaR` runs more efficiently under Unix/Linux than under Windows. NOTE:  when running `tigaR` you may see *** WARNINGS ***  from `INLA` (e.g. on eigenvalues, or on convergence, or even something like 18500 Aborted...). They can currently not be surpressed, because they are produced by C-code. Please ignore them. 
 
