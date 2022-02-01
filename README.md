@@ -1,7 +1,8 @@
-![version](https://img.shields.io/badge/version-1.1.0-blue) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/viktormiok/tigaR) ![GitHub issues](https://img.shields.io/github/issues/viktormiok/tigaR) ![dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-orange)  	![commit](https://img.shields.io/github/last-commit/viktormiok/tigaR) ![GitHub](https://img.shields.io/github/license/viktormiok/tigaR)
+![](https://img.shields.io/badge/language-R-orange.svg) ![version](https://img.shields.io/badge/GiHub_version-1.1.0-519dd9) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/viktormiok/tigaR) ![GitHub issues](https://img.shields.io/github/issues/viktormiok/tigaR)
+
+![dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-orange)  	![commit](https://img.shields.io/github/last-commit/viktormiok/tigaR) ![GitHub](https://img.shields.io/github/license/viktormiok/tigaR)
 
 [![Edit with Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/viktormiok/tigaR) 
-
 
 
 
@@ -40,7 +41,7 @@ utils::vignette("tigaR")
 ```
 ## License
 
-__`tigaR`__ is distributed under the MIT license. The license is distributed with __`tigaR`__ in the `LICENSE`. Please read the license before using __`tigaR`__.
+__`tigaR`__ is distributed under the MIT license. Please read the license before using __`tigaR`__, which it is distributed in the `LICENSE` file.
 
 ## References
 
