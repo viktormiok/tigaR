@@ -39,6 +39,29 @@ library(tigaR)
 utils::help(tigaR)
 utils::vignette("tigaR")
 ```
+
+## Data
+All the data required for performing temporal integrative genomics analysis and publisch in the reference articles have been deposited in the National Center for Biotechnology Information Gene Expression Omnibus (GEO) and are accessible through the GEO Series accession numbers:
+| Data type     | GEO number |
+| ------------- | ------------- |
+| CGH Arrays  | [__`GSE138724`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4117045)  |
+| mRNA Arrays  | [__`GSE138079`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE138079)  |
+| miRNA Arrays  | [__`GSE78279`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE78279)  |
+
+In order to access one of the data set for instance GSE78279 you need to run the code bellow. Unpacking the data requires tar and gunzip, which should already be available on most systems.
+
+```
+cd ../  #To get to the main github repo folder
+mkdir -p data/tigaR_data_analysis/
+cd data/tigaR_data_analysis/
+wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE78nnn/GSE78279/suppl/GSE78279_RAW.tar
+mkdir GSE78279_RAW
+tar -C GSE78279_RAW -xvf GSE78279_RAW.tar
+gunzip GSE78279_RAW/*_Regional_*
+```
+## Docker
+The repository contain the Dockerfile for __`tigaR`__. Using this Dockerfile the Docker image can be build, that allow performing reproducible analysis using __`tigaR`__ R-package.
+
 ## License
 
 __`tigaR`__ is distributed under the MIT license. Please read the license before using __`tigaR`__, which it is distributed in the `LICENSE` file.
