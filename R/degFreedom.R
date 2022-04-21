@@ -30,13 +30,13 @@ degFreedom <- function(fit,
   m_b <- inla.emarginal(function(x) sqrt(x),
                         fit$marginals.hyper[[1]]
   )
-  lambda <- m_e*m_b
+  lambda = m_e*m_b
   if(is.null(lambda)){
     print("Problem problem with estimation")}
   else{        
     df <- sum(diag(dMat %*% solve(t(dMat) %*% dMat + 
                                     lambda*I) %*% t(dMat))) -
-      (ncol(dMat) - ncol(ZSpline))
+      (ncol(dMat)-ncol(ZSpline))
     return(df)
   }
 }

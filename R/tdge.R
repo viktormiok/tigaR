@@ -39,7 +39,7 @@ tdge <- function(dat,
         if (!is(multivar, "logical")) {
           stop("Input (multivar) is of wrong class.")
         }
-        ratio <- logLik <- numeric()
+        ratio = logLik = numeric()
         for (i in 1:nrow(dat)){
           obj <- fitAlt[[1]][[i]]$.args$data
           if(multivar){
@@ -62,8 +62,12 @@ tdge <- function(dat,
                                               ZSpline=ZSpline
             )) 
             pval <- 1- pchisq(lam, df)   
-            ratio <- rbind(ratio, pval)       
-            logLik <- rbind(logLik, lam)      
+            ratio <- rbind(ratio,
+                           pval
+            )       
+            logLik <- rbind(logLik, 
+                            lam
+            )      
           }
         }
         cor_ratio <- p.adjust(ratio, 
