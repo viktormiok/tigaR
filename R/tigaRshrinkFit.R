@@ -101,8 +101,8 @@ tigaRshrinkFit <- function (forms,
               )
             }
             else {
-              logdisp_shr <- c(0, 0.01)
-              logitp0_shr <- c(0, 0.01)
+              logdisp_shr = c(0, 0.01)
+              logitp0_shr = c(0, 0.01)
             }
             if (typelik == "gaussian") {
               precerr_shr <- c(shapeerr=shrinksimul$pmlist$shapeerr, 
