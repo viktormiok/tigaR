@@ -13,9 +13,9 @@ head(CNhpv3)
 source("tigaR_functions.R")
 
 # Specify number of cpus to use
-numcpus2use <- 4  
+numcpus2use = 4  
 # specify the number of genes for fitting
-numgen <- 100
+numgen = 100
 
 ###############################################################################
 ###############################################################################
@@ -24,9 +24,9 @@ numgen <- 100
 ###############################################################################
 
 # time points for different splines
-timefac <- 1:32
+timefac = 1:32
 # groups
-groupfac <- factor(rep(1:4, each=8))
+groupfac = factor(rep(1:4, each=8))
 
 dsg <- getDesign(timefac=timefac, 
                  groupfac=groupfac,
@@ -34,8 +34,8 @@ dsg <- getDesign(timefac=timefac,
                  deg=2, 
                  diffSpl=TRUE 
 )
-ZSpline <- dsg$ZSpline
-design <- dsg$design
+ZSpline = dsg$ZSpline
+design = dsg$design
 
 ###############################################################################
 #
@@ -351,8 +351,8 @@ dsg <- getDesign(timefac=timefac,
                  deg=2, 
                  diffSpl=FALSE 
 )
-ZSpline <- dsg$ZSpline
-design <- dsg$design
+ZSpline = dsg$ZSpline
+design = dsg$design
 
 ###############################################################################
 #
@@ -456,8 +456,8 @@ Result <- tdge(dat=GEhpv3[1:numgen,],
                design=design,
                ZSpline=ZSpline
 )
-rownames(Result) <- 1:numgen
-Result <- Result[order(Result[,3]),]
+rownames(Result) = 1:numgen
+Result = Result[order(Result[,3]),]
 head(Result)
 ###############################################################################
 #
