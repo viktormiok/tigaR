@@ -12,9 +12,9 @@ datax=dat$datCount
 source("tigaR_functions.R")
 
 # Specify number of cpus to use
-numcpus2use <- 4  
+numcpus2use = 4  
 # specify the number of genes for fitting
-numgen <- 100
+numgen = 100
 
 ###############################################################################
 ###############################################################################
@@ -23,9 +23,9 @@ numgen <- 100
 ###############################################################################
 
 # time points for different splines
-timefac <- 1:11
+timefac = 1:11
 # groups
-groupfac <- factor(c(rep(1,6), rep(2,5)))
+groupfac = factor(c(rep(1,6), rep(2,5)))
 
 dsg <- getDesign(timefac=timefac, 
                  groupfac=groupfac,
@@ -33,8 +33,8 @@ dsg <- getDesign(timefac=timefac,
                  deg=2, 
                  diffSpl=TRUE 
 )
-ZSpline <- dsg$ZSpline
-design <- dsg$design
+ZSpline = dsg$ZSpline
+design = dsg$design
 
 ###############################################################################
 #
@@ -141,8 +141,8 @@ Result <- tdge(dat=datax[1:numgen,],
                design=design,
                ZSpline=ZSpline
 )
-rownames(Result) <- 1:numgen
-Result <- Result[order(Result[,3]),]
+rownames(Result) = 1:numgen
+Result = Result[order(Result[,3]),]
 head(Result)
 ###############################################################################
 #
@@ -170,9 +170,9 @@ plot_tigaRfit(fit=seqFitA[[1]][[i]],
 
 
 # time points for cycling genes
-timefac <- c(1:6, 1:5)
+timefac = c(1:6, 1:5)
 # groups
-groupfac <- factor(c(rep(1,6), rep(2,5)))
+groupfac = factor(c(rep(1,6), rep(2,5)))
 
 dsg <- getDesign(timefac=timefac, 
                  groupfac=groupfac,
@@ -180,8 +180,8 @@ dsg <- getDesign(timefac=timefac,
                  deg=2, 
                  diffSpl=FALSE 
 )
-ZSpline <- dsg$ZSpline
-design <- dsg$design
+ZSpline = dsg$ZSpline
+design = dsg$design
 
 ###############################################################################
 #
@@ -288,8 +288,8 @@ Result <- tdge(dat=datax[1:numgen,],
                design=design,
                ZSpline=ZSpline
 )
-rownames(Result) <- 1:numgen
-Result <- Result[order(Result[,3]),]
+rownames(Result) = 1:numgen
+Result = Result[order(Result[,3]),]
 head(Result)
 ###############################################################################
 #
