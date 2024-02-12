@@ -18,8 +18,7 @@
 \date{}
 \title{{\tt tigaR}: Integrative significance analysis of temporal differential gene expression induced by genomic abnormalities}
 \date{\today}
-\author{\textbf{V Miok}, \textbf{SM Wilting}, \textbf{MA van de Wiel}, \textbf{A Jaspers}, \textbf{P Noort},\\
- \textbf{R Brakenhoff}, \textbf{P Snijders}, \textbf{R Steenbergen} \\ and \textbf{WN van Wieringen}}
+\author{\textbf{Viktorian Miok},}
 
 \begin{document}
 \maketitle
@@ -61,10 +60,10 @@ If {\tt DiffSpl} = {\tt TRUE} function create design matrix with different splin
   Function {\tt GetDesign} using this parameters create design matrices for the covariates, which are later required in the functions for fitting and testing.
 \begin{verbatim}
   > desMat = GetDesign(numKnot, deg, numtp, numgroup, DiffSpl=FALSE)
-  > groupfac <- desMat$groupfac
-  > timefac <- desMat$timefac
-  > DsgGroup <- desMat$DsgGroup
-  > ZSpline <- desMat$ZSpline
+  > groupfac = desMat$groupfac
+  > timefac = desMat$timefac
+  > DsgGroup = desMat$DsgGroup
+  > ZSpline = desMat$ZSpline
 \end{verbatim}
 
 \subsection{Model parameters estimation}
