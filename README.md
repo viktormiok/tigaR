@@ -36,7 +36,7 @@ With the proposed R-package __`tigaR`__ for analysis of time-course multilevel m
 <img src="https://user-images.githubusercontent.com/22052679/148564343-38e60761-cb5e-4e1d-966a-77e541a7d1e1.png" align="top" height="540" width="600">
 
 
-**Note:** if you have a choice to use either Windows or Unix/Linux, opt for the latter. __`tigaR`__ runs more efficiently under Unix/Linux than under Windows. NOTE:  when running __`tigaR`__ you may see *** WARNINGS ***  from [__`INLA`__](https://www.r-inla.org/) (e.g. on eigenvalues, or on convergence, or even something like 18500 Aborted...). They can currently not be surpressed, because they are produced by C-code. Please ignore them. 
+**Note:** If you have a choice to use either Windows or Unix/Linux, opt for the latter. __`tigaR`__ runs more efficiently under Unix/Linux than under Windows. NOTE:  When running __`tigaR`__ you may see *** WARNINGS ***  from [__`INLA`__](https://www.r-inla.org/) (e.g. on eigenvalues, or on convergence, or even something like 18500 Aborted...). They can currently not be suppressed, because they are produced by C-code. Please ignore them. 
 
 ## Installation
 
@@ -60,7 +60,7 @@ If your system configuration is making it difficult to install __`tigaR`__ nativ
 
 **Note:** On Mac OS X, Docker Machine has Memory and CPU limits. To control it, please check instructions either for [CLI](https://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac/32834453#32834453) or for [Docker Desktop](https://docs.docker.com/docker-for-mac/#advanced).
 
-For building Docker image from the Dockerfile, download the [Dockerfile](https://github.com/viktormiok/tigaR/blob/main/Dockerf) (available in this repo) and run to following command to build it:
+For building a Docker image from the Dockerfile, download the [Dockerfile](https://github.com/viktormiok/tigaR/blob/main/Dockerf) (available in this repo) and run to following command to build it:
 ```
 docker build -t tigaR .
 ```
@@ -71,17 +71,17 @@ docker run -d -p 8787:8787 -e PASSWORD=pass --name tigaR -it tigaR
 ```
 
 ## Data
-All the data required for performing temporal integrative genomics analysis and publisch in the reference articles have been deposited in the National Center for Biotechnology Information Gene Expression Omnibus (GEO) and are accessible through the GEO Series accession numbers:
+All the data required for performing temporal integrative genomics analysis and published in the reference articles have been deposited in the National Center for Biotechnology Information Gene Expression Omnibus (GEO) and are accessible through the GEO Series accession numbers:
 | Data type     | GEO number |
 | ------------- | ------------- |
 | CGH Arrays  | [__`GSE138724`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4117045)  |
 | mRNA Arrays  | [__`GSE138079`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE138079)  |
 | miRNA Arrays  | [__`GSE78279`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE78279)  |
 
-In order to access one of the data set for instance GSE78279 you need to run the code bellow. Unpacking the data requires tar and gunzip, which should already be available on most systems.
+To access one of the data sets for instance GSE78279 you need to run the code below. Unpacking the data requires tar and gunzip, which should already be available on most systems.
 
 ```
-cd ../  #To get to the main github repo folder
+cd ../  #To get to the main GitHub repo folder
 mkdir -p data/tigaR_data_analysis/
 cd data/tigaR_data_analysis/
 wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE78nnn/GSE78279/suppl/GSE78279_RAW.tar
@@ -102,7 +102,7 @@ Please see the following tutorials for detailed examples of how to use __`tigaR`
 
 ## License
 
-__`tigaR`__ is distributed under the MIT license. Please read the license before using __`tigaR`__, which it is distributed in the `LICENSE` file.
+__`tigaR`__ is distributed under the MIT license. Please read the license before using __`tigaR`__, which is distributed in the `LICENSE` file.
 
 ## References
 
