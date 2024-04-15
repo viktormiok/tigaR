@@ -21,9 +21,9 @@
 
 ## Overview
 
-The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, both sequencing counts RNAseq and continuous microarray data.
+The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, both sequencings count RNAseq and continuous microarray data.
 
-The temporal variation in gene expression is described by a generalised linear mixed model employing low-rank thin-plate splines. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives and improvement of reproducibility. In addition, to make estimates of the DNA copy number more stable, model parameters are also estimated in a multivariate way using triplets of features, imposing a spatial prior for the copy number effect.
+The temporal variation in gene expression is described by a generalized linear mixed model employing low-rank thin-plate splines. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make estimates of the DNA copy number more stable, model parameters are also estimated in a multivariate way using triplets of features, imposing a spatial prior for the copy number effect.
 
 ### Application
 
@@ -36,7 +36,7 @@ With the proposed R-package __`tigaR`__ for analysis of time-course multilevel m
 <img src="https://user-images.githubusercontent.com/22052679/148564343-38e60761-cb5e-4e1d-966a-77e541a7d1e1.png" align="top" height="540" width="600">
 
 
-**Note:** If you have a choice to use either Windows or Unix/Linux, opt for the latter. __`tigaR`__ runs more efficiently under Unix/Linux than under Windows. NOTE:  When running __`tigaR`__ you may see *** WARNINGS ***  from [__`INLA`__](https://www.r-inla.org/) (e.g. on eigenvalues, or on convergence, or even something like 18500 Aborted...). They can currently not be suppressed, because they are produced by C-code. Please ignore them. 
+**Note:** If you can choose to use Windows or Unix/Linux, opt for the latter. __`tigaR`__ runs more efficiently under Unix/Linux than under Windows. NOTE:  When running __`tigaR`__ you may see *** WARNINGS ***  from [__`INLA`__](https://www.r-inla.org/) (e.g. on eigenvalues, or on convergence, or even something like 18500 Aborted...). They can currently not be suppressed, because C-code produces them. Please ignore them. 
 
 ## Installation
 
