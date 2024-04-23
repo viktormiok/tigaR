@@ -23,20 +23,20 @@
 
 The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, both sequencings count RNAseq and continuous microarray data.
 
-The temporal variation in gene expression is described by a generalized linear mixed model employing low-rank thin-plate splines. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make estimates of the DNA copy number more stable, model parameters are also estimated in a multivariate way using triplets of features, imposing a spatial prior for the copy number effect.
+A generalized linear mixed model employing low-rank thin-plate splines describes the temporal variation in gene expression. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make estimates of the DNA copy number more stable, model parameters are also estimated in a multivariate way using triplets of features, imposing a spatial prior for the copy number effect.
 
 ### Application
 
 With the proposed R-package __`tigaR`__ for analysis of time-course multilevel molecular continuous (microarray) and count (RNAseq) data, more profound insight may be gained through:
  - identification of temporal differential gene expression, where the method yields improvements in sensitivity, specificity, and reproducibility compared to existing methods.
  - employing the same spline in modeling up/down-regulated genes may be identified over the cell lines while using different splines more flexibility may be allowed in capturing the temporal variation over time.
- - identification of temporal differential expression induced by DNA copy number abnormalities or/and miRNA expression levels.
+ - Identify temporal differential expression induced by DNA copy number abnormalities or/and miRNA expression levels.
  - identification of miRNA targets to the mRNA gene expression in a time-course fashion.
  
 <img src="https://user-images.githubusercontent.com/22052679/148564343-38e60761-cb5e-4e1d-966a-77e541a7d1e1.png" align="top" height="540" width="600">
 
 
-**Note:** If you can choose to use Windows or Unix/Linux, opt for the latter. __`tigaR`__ runs more efficiently under Unix/Linux than under Windows. NOTE:  When running __`tigaR`__ you may see *** WARNINGS ***  from [__`INLA`__](https://www.r-inla.org/) (e.g. on eigenvalues, or on convergence, or even something like 18500 Aborted...). They can currently not be suppressed, because C-code produces them. Please ignore them. 
+**Note:** If you can choose to use Windows or Unix/Linux, opt for the latter. __`tigaR`__ runs more efficiently under Unix/Linux than Windows. NOTE:  When running __`tigaR`__ you may see *** WARNINGS ***  from [__`INLA`__](https://www.r-inla.org/) (e.g. on eigenvalues, or convergence, or even something like 18500 Aborted...). They can currently not be suppressed, because C-code produces them. Please ignore them. 
 
 ## Installation
 
