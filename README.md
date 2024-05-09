@@ -56,11 +56,11 @@ utils::vignette("tigaR")
 
 ## Docker
 
-If your system configuration makes it difficult to install __`tigaR`__ natively, a docker container is an alternative way to get __`tigaR`__ running.
+If your system configuration makes installing __`tigaR`__ natively difficult, a docker container is an alternative way to get __`tigaR`__ running.
 
 **Note:** Docker Machine has Memory and CPU limits on Mac OS X. To control it, please check instructions either for [CLI](https://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac/32834453#32834453) or for [Docker Desktop](https://docs.docker.com/docker-for-mac/#advanced).
 
-For building a Docker image from the Dockerfile, download the [Dockerfile](https://github.com/viktormiok/tigaR/blob/main/Dockerf) (available in this repo) and run the following command to build it:
+For building a Docker image from the Dockerfile, download the [Dockerfile](https://github.com/viktormiok/tigaR/blob/main/Dockerf) (available in this repo) and run the following command to create it:
 ```
 docker build -t tigaR .
 ```
