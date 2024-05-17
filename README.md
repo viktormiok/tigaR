@@ -102,7 +102,7 @@ Please see the following tutorials for detailed examples of how to use __`tigaR`
 
 ## License
 
-__`tigaR`__ is distributed under the MIT license. Please read the license before using __`tigaR`__, which is distributed in the `LICENSE` file.
+__`tigaR`__ is distributed under the MIT license. Please read the license before using __`tigaR`__, distributed in the `LICENSE` file.
 
 ## References
 
