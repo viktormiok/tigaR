@@ -31,7 +31,7 @@ With the proposed R-package __`tigaR`__ for analysis of time-course multilevel m
  - identification of temporal differential gene expression, where the method yields improvements in sensitivity, specificity, and reproducibility compared to existing methods.
  - employing the same spline in modeling up/down-regulated genes may be identified over the cell lines while using different splines more flexibility may be allowed in capturing the temporal variation over time.
  - Identify temporal differential expression induced by DNA copy number abnormalities or/and miRNA expression levels.
- - identification of miRNA targets to the mRNA gene expression in a time-course fashion.
+ - Identify miRNA targets for the mRNA gene expression in a time-course fashion.
  
 <img src="https://user-images.githubusercontent.com/22052679/148564343-38e60761-cb5e-4e1d-966a-77e541a7d1e1.png" align="top" height="540" width="600">
 
@@ -71,7 +71,7 @@ docker run -d -p 8787:8787 -e PASSWORD=pass --name tigaR -it tigaR
 ```
 
 ## Data
-All the data required for performing temporal integrative genomics analysis and published in the reference articles have been deposited in the National Center for Biotechnology Information Gene Expression Omnibus (GEO) and are accessible through the GEO Series accession numbers:
+All the data required for performing temporal integrative genomics analysis and published in the reference articles have been deposited in the National Center for Biotechnology Information Gene Expression Omnibus (GEO). They are accessible through the GEO Series accession numbers:
 | Data type     | GEO number |
 | ------------- | ------------- |
 | CGH Arrays  | [__`GSE138724`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM4117045)  |
