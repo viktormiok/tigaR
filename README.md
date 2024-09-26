@@ -23,7 +23,7 @@
 
 The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, both sequencings count RNAseq and continuous microarray data.
 
-A generalized linear mixed model employing low-rank thin-plate splines describes the temporal variation in gene expression. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make estimates of the DNA copy number more stable, model parameters are also estimated in a multivariate way using triplets of features, imposing a spatial prior for the copy number effect.
+A generalized linear mixed model employing low-rank thin-plate splines describes the temporal variation in gene expression. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make the estimates of the DNA copy number more stable, model parameters are also multivariate using triplets of features, imposing a spatial prior for the copy number effect.
 
 ### Application
 
