@@ -108,11 +108,11 @@ __`tigaR`__ is distributed under the MIT license. Please read the license before
 
 Publications related to __`tigaR`__ include:
 
-- Miok, V., Wilting, S.M., Van de Wiel, M.A., Jaspers, A., van Noort, P.I., Brakenhoff, R.H., Snijders, P.J.F., Steenbergen, R.D.M., Van Wieringen, W.N. (2014), "[tigaR: integrative significance analysis of temporal differential gene expression induced by genomic abnormalities](https://doi.org/10.1186/1471-2105-15-327)", *BMC Bioinformatics*, 15, 327.
+- **Miok, V.**, Wilting, S.M., Van de Wiel, M.A., Jaspers, A., van Noort, P.I., Brakenhoff, R.H., Snijders, P.J.F., Steenbergen, R.D.M., Van Wieringen, W.N. (2014), "[tigaR: integrative significance analysis of temporal differential gene expression induced by genomic abnormalities](https://doi.org/10.1186/1471-2105-15-327)", *BMC Bioinformatics*, 15, 327.
 
-- Babion, I., Miok, V., Jaspers, A., Huseinovic, A., Steenbergen, R.D., van Wieringen, W.N., Wilting, S.M. (2020), "[Identification of Deregulated Pathways, Key Regulators, and Novel miRNA-mRNA Interactions in HPV-Mediated Transformation](https://doi.org/10.3390/cancers12030700)", *Cancers*, 12(3), 700.
+- Babion, I., **Miok, V.**, Jaspers, A., Huseinovic, A., Steenbergen, R.D., van Wieringen, W.N., Wilting, S.M. (2020), "[Identification of Deregulated Pathways, Key Regulators, and Novel miRNA-mRNA Interactions in HPV-Mediated Transformation](https://doi.org/10.3390/cancers12030700)", *Cancers*, 12(3), 700.
 
-- Babion, I., Miok, V., Jaspers, A., van Wieringen, W.N., Steenbergen, R.D., Wilting, S.M. (2018), "[Comprehensive molecular profiling of HPV-induced transformation over time](https://cancerres.aacrjournals.org/content/78/13_Supplement/5059.short)", *Cancer Research*, 22(3), 200. 
+- Babion, I., **Miok, V.**, Jaspers, A., van Wieringen, W.N., Steenbergen, R.D., Wilting, S.M. (2018), "[Comprehensive molecular profiling of HPV-induced transformation over time](https://cancerres.aacrjournals.org/content/78/13_Supplement/5059.short)", *Cancer Research*, 22(3), 200. 
 
 
 Please cite the relevant publications if you use __`tigaR`__.
