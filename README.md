@@ -21,9 +21,9 @@
 
 ## Overview
 
-The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, both sequencings count RNAseq and continuous microarray data.
+The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, sequencing count RNAseq and continuous microarray data.
 
-A generalized linear mixed model employing low-rank thin-plate splines describes the temporal variation in gene expression. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make the estimates of the DNA copy number more stable, model parameters are also multivariate using triplets of features, imposing a spatial prior for the copy number effect.
+A generalized linear mixed model employing low-rank thin-plate splines describes the temporal variation in gene expression. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make the estimates of the DNA copy number more stable, model parameters are multivariate using triplets of features, imposing a spatial prior for the copy number effect.
 
 ### Application
 
@@ -56,7 +56,7 @@ utils::vignette("tigaR")
 
 ## Docker
 
-If your system configuration makes installing __`tigaR`__ natively difficult, a docker container is an alternative way to get __`tigaR`__ running.
+If your system configuration makes installing __`tigaR`__ natively difficult, a Docker container is an alternative way to get __`tigaR`__ running.
 
 **Note:** Docker Machine has Memory and CPU limits on Mac OS X. To control it, please check instructions either for [CLI](https://stackoverflow.com/questions/32834082/how-to-increase-docker-machine-memory-mac/32834453#32834453) or for [Docker Desktop](https://docs.docker.com/docker-for-mac/#advanced).
 
