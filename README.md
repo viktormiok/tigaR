@@ -23,13 +23,13 @@
 
 The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, sequencing count RNAseq and continuous microarray data.
 
-A generalized linear mixed model employing low-rank thin-plate splines describes the temporal variation in gene expression. Model parameters are estimated with an empirical Bayes procedure, which exploits integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make the estimates of the DNA copy number more stable, model parameters are multivariate using triplets of features, imposing a spatial prior for the copy number effect.
+A generalized linear mixed model employing low-rank thin-plate splines describes the temporal variation in gene expression. Model parameters are estimated with an empirical Bayes procedure, which exploits an integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make the estimates of the DNA copy number more stable, model parameters are multivariate using triplets of features, imposing a spatial prior for the copy number effect.
 
 ### Application
 
 With the proposed R-package __`tigaR`__ for analysis of time-course multilevel molecular continuous (microarray) and count (RNAseq) data, more profound insight may be gained through:
  - Identification of temporal differential gene expression, where the method yields improvements in sensitivity, specificity, and reproducibility compared to existing methods.
- Employing the same spline in modeling up/down-regulated genes may be identified across cell lines, while using different splines may allow more flexibility in capturing the temporal variation over time.
+ Employing the same spline in modeling up-/down-regulated genes may be identified across cell lines, while using different splines may allow more flexibility in capturing the temporal variation over time.
  - Identify temporal differential expression induced by DNA copy number abnormalities and/or miRNA expression levels.
  - Identify miRNA targets for the mRNA gene expression in a time-course fashion.
  
@@ -62,9 +62,9 @@ If your system configuration makes installing __`tigaR`__ natively difficult, a 
 
 For building a Docker image from the Dockerfile, download the [Dockerfile](https://github.com/viktormiok/tigaR/blob/main/Dockerf) (available in this repo) and run the following command to create it:
 ```
-docker build -t tigaR .
+docker build -t tigaR.
 ```
-This will create a __`tigaR`__ docker image on your system (please be patient, as the build could take approximately 30-50 minutes to finish).
+This will create a __`tigaR`__ Docker image on your system (please be patient, as the build could take approximately 30-50 minutes to finish).
 You can then run it using the following command:
 ```
 docker run -d -p 8787:8787 -e PASSWORD=pass --name tigaR -it tigaR
@@ -78,7 +78,7 @@ All the data required for performing temporal integrative genomics analysis and 
 | mRNA Arrays  | [__`GSE138079`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE138079)  |
 | miRNA Arrays  | [__`GSE78279`__](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE78279)  |
 
-To access one of the data sets for instance GSE78279 you need to run the code below. Unpacking the data requires tar and gunzip, which should already be available on most systems.
+To access one of the data sets for instance, GSE78279 you need to run the code below. Unpacking the data requires tar and gunzip, which should already be available on most systems.
 
 ```
 cd ../  #To get to the main GitHub repo folder
