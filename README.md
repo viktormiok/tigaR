@@ -36,7 +36,7 @@ With the proposed R-package __`tigaR`__ for analysis of time-course multilevel m
 <img src="https://user-images.githubusercontent.com/22052679/148564343-38e60761-cb5e-4e1d-966a-77e541a7d1e1.png" align="top" height="540" width="600">
 
 
-**Note:** If you can choose to use Windows or Unix/Linux, opt for the latter. __`tigaR`__ runs more efficiently under Unix/Linux than Windows. NOTE:  When running __`tigaR`__ you may see *** WARNINGS ***  from [__`INLA`__](https://www.r-inla.org/) (e.g. on eigenvalues, or convergence, or even something like 18500 Aborted...). They can currently not be suppressed, because C-code produces them. Please ignore them. 
+**Note:** If you can choose to use Windows or Unix/Linux, opt for the latter. __`tigaR`__ runs more efficiently under Unix/Linux than Windows. NOTE:  When running __`tigaR`__ you may see *** WARNINGS ***  from [__`INLA`__](https://www.r-inla.org/) (e.g. on eigenvalues, or convergence, or even something like 18500 Aborted...). They can currently not be suppressed, because C code produces them. Please ignore them. 
 
 ## Installation
 
