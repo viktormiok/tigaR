@@ -21,9 +21,9 @@
 
 ## Overview
 
-The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, sequencing count RNAseq and continuous microarray data.
+The R-package __`tigaR`__ performs temporal integrative differential expression analysis of omics data, sequencing count RNA-seq and continuous microarray data.
 
-A generalized linear mixed model employing low-rank thin-plate splines describes the temporal variation in gene expression. Model parameters are estimated with an empirical Bayes procedure, which exploits an integrated nested Laplace approximation for fast computation. Iteratively, the posteriors of hyperparameters and model parameters are estimated. The empirical Bayes procedure shrinks multiple dispersion-related parameters. Shrinkage leads to more stable estimates of the model parameters, better control of false positives, and improvement of reproducibility. In addition, to make the estimates of the DNA copy number more stable, model parameters are multivariate using triplets of features, imposing a spatial prior for the copy number effect.
+A generalized linear mixed model with low‑rank thin‑plate splines is used to characterize temporal variation in gene expression. Model parameters are estimated through an empirical Bayes approach that leverages the integrated nested Laplace approximation for computational efficiency. In an iterative procedure, posterior distributions of both hyperparameters and model parameters are updated. The empirical Bayes framework induces shrinkage on multiple dispersion‑related parameters, yielding more stable parameter estimates, improved control of false positives, and enhanced reproducibility. Furthermore, to obtain more robust estimates of DNA copy number effects, the model incorporates multivariate parameters defined over triplets of features, thereby imposing a spatial prior on the copy‑number component.
 
 ### Application
 
@@ -64,7 +64,7 @@ For building a Docker image from the Dockerfile, download the [Dockerfile](https
 ```
 docker build -t tigaR.
 ```
-This will create a __`tigaR`__ Docker image on your system (please be patient, as the build could take approximately 30-50 minutes to finish).
+This will create a __`tigaR`__ Docker image on your system (Please be patient, as the build may take approximately 30–50 minutes to complete).
 You can then run it using the following command:
 ```
 docker run -d -p 8787:8787 -e PASSWORD=pass --name tigaR -it tigaR
