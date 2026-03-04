@@ -29,7 +29,7 @@ A generalized linear mixed model with low‑rank thin‑plate splines is used to
 
 With the proposed R-package __`tigaR`__ for analysis of time-course multilevel molecular continuous (microarray) and count (RNAseq) data, more profound insight may be gained through:
  - Identification of temporal differential gene expression, where the method yields improvements in sensitivity, specificity, and reproducibility compared to existing methods.
- Employing the same spline in modeling up-/down-regulated genes may be identified across cell lines, while using different splines may allow more flexibility in capturing the temporal variation over time.
+ Using the same spline to model up‑ and down‑regulated genes can help identify consistent patterns across cell lines, whereas allowing different splines provides greater flexibility to capture temporal variation over time.
  - Identify temporal differential expression induced by DNA copy number abnormalities and/or miRNA expression levels.
  - Identify miRNA targets for the mRNA gene expression in a time-course fashion.
  
