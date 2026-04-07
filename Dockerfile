@@ -77,4 +77,4 @@ RUN Rscript /opt/packages.R
 
 COPY Dockerfile /opt/
 
-MAINTAINER Viktorian Miok, Seven Bridges, <viktorian.miok@sbgenomics.com>
+MAINTAINER Viktorian Miok, Seven Bridges, <viktormiok@gmail.com>
